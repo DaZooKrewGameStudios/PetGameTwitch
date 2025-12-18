@@ -1,0 +1,32 @@
+name: UE5 Linux Package (Epic container)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+    - name: Set execution policy
+      shell: powershell
+      run: Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+    
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        lfs: true
+    - run: git config --global --add safe.directory C:/actions-runner/_work/SG2_Exploration/SG2_Exploration
+    - run: git status
+    - run: git lfs pull
+      
+    - name: Build UE5 Project
+      uses: OrchidIsle/UE5-Build-Project@latest
+      with:
+        RUNUAT_PATH: 'C:/Program Files/Epic Games/UE_5.7/Engine/Build/BatchFiles/RunUAT.bat'
+        UPROJECT_PATH: '${{github.workspace}}/SantaJam_Explore.uproject'
+        BUILD_CONFIG: 'Development'
+        PLATFORM: 'Win64'
+        # Add other optional parameters as needed
