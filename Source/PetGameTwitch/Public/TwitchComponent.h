@@ -1,0 +1,31 @@
+
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Components/ActorComponent.h"
+//#include "TwitchSDK.h"
+//#include "G:/VideoGameProjects/DZKProjects/PetGameTwitch/Plugins/TwitchSDK/TwitchSDK-Unreal-121523/core/include/r66.hpp"
+#include "TwitchComponent.generated.h"
+
+
+UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+class PETGAMETWITCH_API UTwitchComponent : public UActorComponent
+{
+	GENERATED_BODY()
+
+public:	
+	// Sets default values for this component's properties
+	UTwitchComponent();
+
+protected:
+	// Called when the game starts
+	virtual void BeginPlay() override;
+
+public:	
+	// Called every frame
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+		
+	
+};
