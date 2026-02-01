@@ -10,9 +10,6 @@ jobs:
   build:
     runs-on: windows-2019
     steps:
-    - name: Extract repository name
-      run: echo "REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)" >> $GITHUB_ENV
-      shell: bash
     
     - name: Set execution policy
       shell: powershell
@@ -30,7 +27,7 @@ jobs:
       uses: OrchidIsle/UE5-Build-Project@latest
       with:
         RUNUAT_PATH: 'C:/Program Files/Epic Games/UE_5.7/Engine/Build/BatchFiles/RunUAT.bat'
-        UPROJECT_PATH: '${{github.workspace}}/${{env.REPO_NAME}}.uproject'
+        UPROJECT_PATH: '${{github.workspace}}/${{github.event.repository.name}}.uproject'
         BUILD_CONFIG: 'Development'
         PLATFORM: 'Win64'
         # Add other optional parameters as needed
