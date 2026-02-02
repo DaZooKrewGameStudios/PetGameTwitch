@@ -45,7 +45,7 @@ IMPLEMENT_MODULE(FTwitchSDKModule, TwitchSDK);
 
 DEFINE_LOG_CATEGORY(LogTwitchSDK);
 
-R66::string R66::BuildOAuthScopes(TArray<FTwitchSDKOAuthScope> scopes, TArray<FString> customScopes) {
+TWITCHSDK_API R66::string R66::BuildOAuthScopes(TArray<FTwitchSDKOAuthScope> scopes, TArray<FString> customScopes) {
 	FString s = UTwitchSDKBPLibrary::BuildOAuthScopes(scopes, customScopes);
 	return R66::string(FromFString(s));
 }
