@@ -1,4 +1,4 @@
-name: UE5 Linux Package (Epic container)
+name: UE5 Windows
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         lfs: true
-#    - run: git config --global --add safe.directory C:/actions-runner/_work/${{github.path}}
+    - run: git config --global --add safe.directory C:/actions-runner/_work/${{github.path}}
     - run: git status
     - run: git lfs pull
       
