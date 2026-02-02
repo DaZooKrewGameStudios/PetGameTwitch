@@ -77,7 +77,7 @@ namespace R66 {
 
     // Helper functions
 
-    R66::string BuildOAuthScopes(TArray<FTwitchSDKOAuthScope> scopes, TArray<FString> customScopes = {});
+    TWITCHSDK_API R66::string BuildOAuthScopes(TArray<FTwitchSDKOAuthScope> scopes, TArray<FString> customScopes = {});
 }
 
 namespace TwitchSDK = R66;
