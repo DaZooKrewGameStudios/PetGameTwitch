@@ -1,4 +1,4 @@
-name: UE5 Windows
+name: UE5 Windows Build
 
 on:
   push:
@@ -10,7 +10,6 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-    
     - name: Set execution policy
       shell: powershell
       run: Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
@@ -19,14 +18,14 @@ jobs:
       uses: actions/checkout@v3
       with:
         lfs: true
-    - run: git config --global --add safe.directory C:/actions-runner/_work/${{github.path}}
+    - run: git config --global --add safe.directory .
     - run: git status
     - run: git lfs pull
       
     - name: Build UE5 Project
       uses: OrchidIsle/UE5-Build-Project@latest
       with:
-        RUNUAT_PATH: 'C:/Program Files/Epic Games/UE_5.7/Engine/Build/BatchFiles/RunUAT.bat'
+        RUNUAT_PATH: '${{secrets.UE_PATH}}/Engine/Build/BatchFiles/RunUAT.bat'
         UPROJECT_PATH: '${{github.workspace}}/${{github.event.repository.name}}.uproject'
         BUILD_CONFIG: 'Development'
         PLATFORM: 'Win64'
