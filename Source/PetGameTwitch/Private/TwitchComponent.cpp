@@ -18,7 +18,7 @@ void UTwitchComponent::BeginPlay()
 
 	auto core = FModuleManager::LoadModuleChecked<FTwitchSDKModule>("TwitchSDK").Core;	
 	core->GetAuthenticationInfo(
-		TwitchSDK::BuildOAuthScopes({ FTwitchSDKOAuthScope::ChannelManageBroadcast, FTwitchSDKOAuthScope::ChannelManagePolls }),
+		TwitchSDK::BuildOAuthScopes({ FTwitchSDKOAuthScope::ChannelManageRedemptions, FTwitchSDKOAuthScope::ChannelReadHype_Train }),
 		[](const TwitchSDK::AuthenticationInfo& info) {
 			if (info.UserCode.size() == 0)
 			{
@@ -36,14 +36,11 @@ void UTwitchComponent::BeginPlay()
 
 
 	auto stream = core->SubscribeToCustomRewardEvents();
-	stream.WaitForEvent([](const TwitchSDK::CustomRewardEvent& e) {
-		auto UserName = TwitchSDK::ToFString(e.RedeemerName);
-		auto RewardName = TwitchSDK::ToFString(e.CustomRewardTitle);
-		auto message = FString::Printf(TEXT("%s just purchased %s!"), *UserName, *RewardName);
-
-		//print message to screen or do something interesting
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, message);
-		});
+	stream.WaitForEvent([](const TwitchSDK::CustomRewardEvent& e)
+	{
+		
+		
+	});
 
 }
 
@@ -55,5 +52,24 @@ void UTwitchComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 
 	// ...
 }
+
+TwitchSDK::CustomRewardEvent UTwitchComponent::handleCustomRewardEvent(
+	const TwitchSDK::CustomRewardEvent& e)
+{
+	return e;
+}
+
+
+//hComponent::handleCustomRewardEvent(const TwitchSDK::CustomRewardEvent& e)
+//{
+//	auto UserName = TwitchSDK::ToFString(e.RedeemerName);
+//	auto RewardName = TwitchSDK::ToFString(e.CustomRewardTitle);
+//	auto message = FString::Printf(TEXT("%s just purchased %s!"), *UserName, *RewardName);
+//
+//	//print message to screen or do something interesting
+//	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, message);
+//	
+//	 
+//}
 
 
