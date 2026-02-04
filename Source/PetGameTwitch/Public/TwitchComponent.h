@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "TwitchSDK.h"
 #include "TwitchComponent.generated.h"
-
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class PETGAMETWITCH_API UTwitchComponent : public UActorComponent
@@ -23,5 +23,19 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+	TwitchSDK::CustomRewardEvent handleCustomRewardEvent(const TwitchSDK::CustomRewardEvent& e);
+	
+	UPROPERTY(EditAnywhere)
+	bool bDebug = false;
+	
+	UPROPERTY(EditAnywhere)
+	bool bEnableRewardRedemption = true;
+
+	UPROPERTY(EditAnywhere)
+	bool bEnableHypeTrainSubscription = true;
+
+	UPROPERTY(EditAnywhere)
+	bool bEnableRaidSubscription = true;
 
 };
