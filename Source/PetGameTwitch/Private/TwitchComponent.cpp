@@ -21,7 +21,7 @@ void UTwitchComponent::BeginPlay()
 		TwitchSDK::BuildOAuthScopes({ FTwitchSDKOAuthScope::ChannelManageRedemptions, FTwitchSDKOAuthScope::ChannelReadHype_Train }),
 		[](const TwitchSDK::AuthenticationInfo& info) {
 			if (info.UserCode.size() == 0)
-			{
+			{87
 				UE_LOG(LogTemp, Warning, TEXT("The user is already authenticated"));
 			}
 			else
@@ -36,11 +36,73 @@ void UTwitchComponent::BeginPlay()
 
 
 	auto stream = core->SubscribeToCustomRewardEvents();
-	stream.WaitForEvent([](const TwitchSDK::CustomRewardEvent& e)
+	auto rewardStream = core->SubscribeToCustomRewardEvents();
+	auto hypetrainStream = core->SubscribeToHypeTrainEvents();
+	auto raidStream = core->SubscribeToChannelSubscribeEvents();
+	auto followStream = core->SubscribeToChannelFollowEvents();
+
+	auto rewardHandler = [this](const TwitchSDK::CustomRewardEvent& e)
 	{
 		
-		
-	});
+		if (bDebug)
+		{
+			auto BroadcasterName = TwitchSDK::ToFString(e.BroadcasterName);
+			auto message = FString::Printf(TEXT("Hype Train Event on %s! Level: %d, Total Points: %lld", *BroadcasterName, e.CustomRewardTitle, e.CustomRewardCost));
+			//print message to screen or do something interesting
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Purple, message);
+		}
+
+		return handleCustomRewardEvent(e);
+	};
+
+	
+	auto hypetrainHandler = [this](const TwitchSDK::HypeTrainEvent& e)
+	{
+		if (bDebug)
+		{
+			auto BroadcasterName = TwitchSDK::ToFString(e.BroadcasterName);
+			auto message = FString::Printf(TEXT("Hype Train Event on %s! Level: %d, Total Points: %lld"), *BroadcasterName, e.Level, e.TotalPoints);
+			//print message to screen or do something interesting
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Purple, message);
+		}
+		return e;
+	};
+
+	auto raidHandler = [this](const TwitchSDK::ChannelSubscribeEvent& e)
+	{
+		if (bDebug)
+		{
+			auto BroadcasterName = TwitchSDK::ToFString(e.UserDisplayName);
+			auto message = FString::Printf(TEXT("Raid Event on %s!"), *BroadcasterName);
+			//print message to screen or do something interesting
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, message);
+		}
+		return e;
+	};
+
+	auto subscribeHandler = [this](const TwitchSDK::ChannelFollowEvent& e)
+	{
+		if (bDebug)
+		{
+			auto BroadcasterName = TwitchSDK::ToFString(e.UserDisplayName);
+			auto message = FString::Printf(TEXT("Follow Event on %s!"), *BroadcasterName);
+			//print message to screen or do something interesting
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, message);
+		}
+		return e;
+	};
+
+	auto followerHandler = [this](const TwitchSDK::ChannelFollowEvent& e)
+	{
+		if (bDebug)
+		{
+			auto BroadcasterName = TwitchSDK::ToFString(e.UserDisplayName);
+			auto message = FString::Printf(TEXT("Follow Event on %s!"), *BroadcasterName);
+			//print message to screen or do something interesting
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, message);
+		}
+		return e;
+	};
 
 }
 
