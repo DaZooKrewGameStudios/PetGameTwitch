@@ -19,16 +19,6 @@
 			]
 		},
 		{
-			"Name": "BlueprintAssist",
-			"Enabled": true,
-			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/9e895371fa3a471c87337860d6f341ff"
-		},
-		{
-			"Name": "AssetsCleaner",
-			"Enabled": true,
-			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/3caab7c6e81f449296989122c043ae21"
-		},
-		{
 			"Name": "CommonUI",
 			"Enabled": true
 		},
@@ -42,10 +32,6 @@
 		},
 		{
 			"Name": "PCG",
-			"Enabled": true
-		},
-		{
-			"Name": "TwitchSDK",
 			"Enabled": true
 		}
 	]

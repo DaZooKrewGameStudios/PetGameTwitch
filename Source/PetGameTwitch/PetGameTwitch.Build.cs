@@ -13,8 +13,8 @@ public class PetGameTwitch : ModuleRules
 		IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
 		bUseUnity = false;
 
-        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "TwitchSDK" });
-        PrivateDependencyModuleNames.AddRange(new string[] { "TwitchSDK" });
+        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore"});
+//        PrivateDependencyModuleNames.AddRange(new string[] { "TwitchSDK" });
         
 		// Uncomment if you are using Slate UI
 		//	PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
