@@ -75,3 +75,16 @@ Plugins/**/Intermediate/*
 DerivedDataCache/*
 '.idea/*' 
 .idea/ 
+
+/.git
+/.github
+/.idea
+/.vscode
+/Content
+/DerivedDataCache
+/Intermediate
+/Saved
+/Plugins/TwitchSDK/core
+/Plugins/TwitchSDK/Intermediate
+PetGameTwitch.code-workspace
+Makefile

@@ -1,0 +1,10 @@
+/.git
+/.github
+/.idea
+/.vscode
+/Content
+/DerivedDataCache
+/Intermediate
+/Saved
+/Plugins/TwitchSDK/core
+/Plugins/TwitchSDK/Intermediate
