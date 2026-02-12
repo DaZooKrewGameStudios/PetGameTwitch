@@ -84,7 +84,6 @@ DerivedDataCache/*
 /DerivedDataCache
 /Intermediate
 /Saved
-/Plugins/TwitchSDK/core
 /Plugins/TwitchSDK/Intermediate
 PetGameTwitch.code-workspace
 Makefile
