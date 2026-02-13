@@ -1,2 +1,5 @@
-# TemplatePotato
-Template for an empty project that has alot of heavy resource features turned off by default. Lumen is off, Nanite limited, shadows and other features set at low scalibility
+# PetGameTwitch
+[![UE5 Windows Build](https://github.com/DaZooKrewGameStudios/PetGameTwitch/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/DaZooKrewGameStudios/PetGameTwitch/actions/workflows/main.yml)
+
+# Overview
+A small pet game with twitch integration to have viewers play with pet.
