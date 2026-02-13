@@ -4,8 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//#include "TwitchSDK.h"
-//#include "G:/VideoGameProjects/DZKProjects/PetGameTwitch/Plugins/TwitchSDK/TwitchSDK-Unreal-121523/core/include/r66.hpp"
 #include "TwitchComponent.generated.h"
 
 
@@ -26,6 +24,4 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-		
-	
 };

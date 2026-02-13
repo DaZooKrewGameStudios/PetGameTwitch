@@ -66,9 +66,7 @@ public class TwitchSDK : ModuleRules
 				"HTTP",
 				"WebSockets",
 				"Json",
-				"DeveloperSettings",
-                //"EditorStyle", // if using editor styles
-				//"UnrealEd"     // if this is editor-only code
+				"DeveloperSettings"
 			}
 			);
 

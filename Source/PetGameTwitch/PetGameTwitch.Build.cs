@@ -13,11 +13,12 @@ public class PetGameTwitch : ModuleRules
 
         PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "TwitchSDK" });
 
-		PrivateDependencyModuleNames.AddRange(new string[] { "TwitchSDK" });
+		PrivateDependencyModuleNames.AddRange(new string[] { "TwitchSDK"});
 
 		// Uncomment if you are using Slate UI
 		PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
 		
+		PublicDelayLoadDLLs.Add("UnrealEditor-TwitchSDK.dll");
 		// Uncomment if you are using online features
 		// PrivateDependencyModuleNames.Add("OnlineSubsystem");
 
