@@ -21,7 +21,7 @@ void UTwitchComponent::BeginPlay()
 		TwitchSDK::BuildOAuthScopes({ FTwitchSDKOAuthScope::ChannelManageRedemptions, FTwitchSDKOAuthScope::ChannelReadHype_Train }),
 		[](const TwitchSDK::AuthenticationInfo& info) {
 			if (info.UserCode.size() == 0)
-			{87
+			{
 				UE_LOG(LogTemp, Warning, TEXT("The user is already authenticated"));
 			}
 			else
@@ -47,7 +47,7 @@ void UTwitchComponent::BeginPlay()
 		if (bDebug)
 		{
 			auto BroadcasterName = TwitchSDK::ToFString(e.BroadcasterName);
-			auto message = FString::Printf(TEXT("Hype Train Event on %s! Level: %d, Total Points: %lld", *BroadcasterName, e.CustomRewardTitle, e.CustomRewardCost));
+			auto message = FString::Printf(TEXT("Hype Train Event"));
 			//print message to screen or do something interesting
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Purple, message);
 		}
@@ -61,7 +61,7 @@ void UTwitchComponent::BeginPlay()
 		if (bDebug)
 		{
 			auto BroadcasterName = TwitchSDK::ToFString(e.BroadcasterName);
-			auto message = FString::Printf(TEXT("Hype Train Event on %s! Level: %d, Total Points: %lld"), *BroadcasterName, e.Level, e.TotalPoints);
+			auto message = FString::Printf(TEXT("Hype Train Event"));
 			//print message to screen or do something interesting
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Purple, message);
 		}
@@ -73,7 +73,7 @@ void UTwitchComponent::BeginPlay()
 		if (bDebug)
 		{
 			auto BroadcasterName = TwitchSDK::ToFString(e.UserDisplayName);
-			auto message = FString::Printf(TEXT("Raid Event on %s!"), *BroadcasterName);
+			auto message = FString::Printf(TEXT("Hype Train Event"));
 			//print message to screen or do something interesting
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, message);
 		}
@@ -85,7 +85,7 @@ void UTwitchComponent::BeginPlay()
 		if (bDebug)
 		{
 			auto BroadcasterName = TwitchSDK::ToFString(e.UserDisplayName);
-			auto message = FString::Printf(TEXT("Follow Event on %s!"), *BroadcasterName);
+			auto message = FString::Printf(TEXT("Hype Train Event"));
 			//print message to screen or do something interesting
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, message);
 		}
@@ -97,7 +97,7 @@ void UTwitchComponent::BeginPlay()
 		if (bDebug)
 		{
 			auto BroadcasterName = TwitchSDK::ToFString(e.UserDisplayName);
-			auto message = FString::Printf(TEXT("Follow Event on %s!"), *BroadcasterName);
+			auto message = FString::Printf(TEXT("Hype Train Event"));
 			//print message to screen or do something interesting
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, message);
 		}
