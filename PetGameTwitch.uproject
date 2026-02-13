@@ -36,6 +36,10 @@
 		{
 			"Name": "PCG",
 			"Enabled": true
+		},
+		{
+			"Name": "TwitchSDK",
+			"Enabled": true
 		}
 	]
 }

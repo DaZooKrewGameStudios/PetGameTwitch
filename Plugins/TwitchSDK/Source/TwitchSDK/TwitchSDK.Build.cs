@@ -31,7 +31,8 @@ public class TwitchSDK : ModuleRules
 
 		CppStandard = CppStandardVersion.Latest;
 
-		
+
+		bEnableExceptions = true;
 
 		PublicIncludePaths.AddRange(
 			new string[] {
